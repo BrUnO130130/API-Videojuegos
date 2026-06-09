@@ -1,12 +1,8 @@
 {
-<<<<<<< HEAD
-  "version": 3,
-=======
   "version": 4,
->>>>>>> rama-emma
   "targets": {
     "net10.0": {
-      "Microsoft.AspNetCore.OpenApi/10.0.5": {
+      "Microsoft.AspNetCore.OpenApi/10.0.8": {
         "type": "package",
         "dependencies": {
           "Microsoft.OpenApi": "2.0.0"
@@ -44,10 +40,10 @@
     }
   },
   "libraries": {
-    "Microsoft.AspNetCore.OpenApi/10.0.5": {
-      "sha512": "vTcxIfOPyfFbYk1g8YcXJfkMnlEWVkSnnjxcZLy60zgwiHMRf2SnZR+9E4HlpwKxgE3yfKMOti8J6WfKuKsw6w==",
+    "Microsoft.AspNetCore.OpenApi/10.0.8": {
+      "sha512": "cw24xHE2QaWwyEG9GQwFbjboyabub6Vd80DIItUGENzcQOa/BEnTrXsg2GADqWTmY/3ycqk9ToLGjgvF/VRlGA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.openapi/10.0.5",
+      "path": "microsoft.aspnetcore.openapi/10.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -58,7 +54,7 @@
         "build/Microsoft.AspNetCore.OpenApi.targets",
         "lib/net10.0/Microsoft.AspNetCore.OpenApi.dll",
         "lib/net10.0/Microsoft.AspNetCore.OpenApi.xml",
-        "microsoft.aspnetcore.openapi.10.0.5.nupkg.sha512",
+        "microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
         "microsoft.aspnetcore.openapi.nuspec"
       ]
     },
@@ -83,35 +79,21 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Microsoft.AspNetCore.OpenApi >= 10.0.5"
+      "Microsoft.AspNetCore.OpenApi >= 10.0.8"
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\bruno\\.nuget\\packages\\": {}
-=======
     "C:\\Users\\emmab\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
->>>>>>> rama-emma
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\bruno\\OneDrive\\Documents\\ApiVideojuegos\\API\\API.csproj",
-      "projectName": "API",
-      "projectPath": "C:\\Users\\bruno\\OneDrive\\Documents\\ApiVideojuegos\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bruno\\OneDrive\\Documents\\ApiVideojuegos\\API\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config"
-=======
-      "projectUniqueName": "C:\\Users\\emmab\\OneDrive\\Desktop\\CREUS - PROGRAMACION\\PROGRAMACION 3\\TP PROGRAMACION VIDEOJUEGOS\\API-Videojuegos\\API.csproj",
-      "projectName": "API",
-      "projectPath": "C:\\Users\\emmab\\OneDrive\\Desktop\\CREUS - PROGRAMACION\\PROGRAMACION 3\\TP PROGRAMACION VIDEOJUEGOS\\API-Videojuegos\\API.csproj",
+      "projectUniqueName": "C:\\Users\\emmab\\OneDrive\\Desktop\\CREUS - PROGRAMACION\\PROGRAMACION 3\\TP PROGRAMACION VIDEOJUEGOS\\API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+      "projectName": "CatalogoVideojuegos",
+      "projectPath": "C:\\Users\\emmab\\OneDrive\\Desktop\\CREUS - PROGRAMACION\\PROGRAMACION 3\\TP PROGRAMACION VIDEOJUEGOS\\API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
       "packagesPath": "C:\\Users\\emmab\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\emmab\\OneDrive\\Desktop\\CREUS - PROGRAMACION\\PROGRAMACION 3\\TP PROGRAMACION VIDEOJUEGOS\\API-Videojuegos\\obj\\",
+      "outputPath": "C:\\Users\\emmab\\OneDrive\\Desktop\\CREUS - PROGRAMACION\\PROGRAMACION 3\\TP PROGRAMACION VIDEOJUEGOS\\API-Videojuegos\\CatalogoVideojuegos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -120,24 +102,17 @@
         "C:\\Users\\emmab\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> rama-emma
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-<<<<<<< HEAD
-=======
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
->>>>>>> rama-emma
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
-<<<<<<< HEAD
-=======
           "framework": "net10.0",
->>>>>>> rama-emma
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -152,23 +127,16 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-<<<<<<< HEAD
-      "SdkAnalysisLevel": "10.0.200"
-    },
-    "frameworks": {
-      "net10.0": {
-=======
       "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
         "framework": "net10.0",
->>>>>>> rama-emma
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
-            "version": "[10.0.5, )"
+            "version": "[10.0.8, )"
           }
         },
         "imports": [
@@ -190,11 +158,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
-=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
->>>>>>> rama-emma
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

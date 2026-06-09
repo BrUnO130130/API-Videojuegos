@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "9cyq2nFF+QI=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\emmab\\OneDrive\\Desktop\\CREUS - PROGRAMACION\\PROGRAMACION 3\\TP PROGRAMACION VIDEOJUEGOS\\API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\emmab\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
+    "C:\\Users\\emmab\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
