@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nqDw4wsKunQ=",
+  "dgSpecHash": "qKKpt66VJSM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\bruno\\ApiVideoJuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+  "projectFilePath": "C:\\Users\\bruno\\OneDrive\\Documents\\ApiVideojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.data.sqlite\\10.0.8\\microsoft.data.sqlite.10.0.8.nupkg.sha512",
