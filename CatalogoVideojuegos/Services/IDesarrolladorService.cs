@@ -1,10 +1,10 @@
-namespace CatalogoVideojuegos.Models;
-public interface IDesarrollador{
-    
-    String ObternerTodos();
-    String ObternerPorId(int id);
-    Desarrollador Crear(Desarrollador desarrollador);
-    Boolean Actualizar();
-    Boolean Eliminar(int id);
-
+using CatalogoVideojuegos.DTOs;
+using CatalogoVideojuegos.Models;
+public interface IDesarrolladorService
+{
+    List<Desarrollador> ObtenerTodos();
+    Desarrollador? ObtenerPorId(int id);
+    Desarrollador Crear(DesarrolladorDTO dto);
+    bool Actualizar(int id, DesarrolladorDTO dto);
+    bool Eliminar(int id);
 }

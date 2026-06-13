@@ -104,7 +104,6 @@ C:\Users\bruno\OneDrive\Documents\ApiVideojuegos\CatalogoVideojuegos\obj\Debug\n
 C:\Users\bruno\OneDrive\Documents\ApiVideojuegos\CatalogoVideojuegos\obj\Debug\net10.0\CatalogoVideojuegos.csproj.CoreCompileInputs.cache
 C:\Users\bruno\OneDrive\Documents\ApiVideojuegos\CatalogoVideojuegos\obj\Debug\net10.0\CatalogoVideojuegos.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\bruno\OneDrive\Documents\ApiVideojuegos\CatalogoVideojuegos\obj\Debug\net10.0\CatalogoVideojuegos.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\bruno\OneDrive\Documents\ApiVideojuegos\CatalogoVideojuegos\obj\Debug\net10.0\CatalogoVideojuegos.sourcelink.json
 C:\Users\bruno\OneDrive\Documents\ApiVideojuegos\CatalogoVideojuegos\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\bruno\OneDrive\Documents\ApiVideojuegos\CatalogoVideojuegos\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\bruno\OneDrive\Documents\ApiVideojuegos\CatalogoVideojuegos\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
