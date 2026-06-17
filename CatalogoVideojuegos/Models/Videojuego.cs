@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 namespace CatalogoVideojuegos.Models
 {
     public class Videojuego
@@ -12,6 +13,8 @@ namespace CatalogoVideojuegos.Models
         public int IdDesarrollador { get; set; }
 
         // Propiedad de navegación
+        
+        [JsonIgnore]
         public Desarrollador? Desarrollador { get; set; }
     }
 }

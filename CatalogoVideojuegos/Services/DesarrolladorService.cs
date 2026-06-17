@@ -1,60 +1,137 @@
 using CatalogoVideojuegos.DTOs;
 using CatalogoVideojuegos.Models;
+using Microsoft.Data.Sqlite;
 
 namespace CatalogoVideojuegos.Services;
 
 public class DesarrolladorService : IDesarrolladorService
 {
-    private readonly List<Desarrollador> desarrolladores = new();
+    private readonly string connectionString = "Data Source=videojuegos.db";
 
-    public List<Desarrollador> ObtenerTodos()
-    {
-        return desarrolladores;
-    }
+public List<Desarrollador> ObtenerTodos()
+{
+    var desarrolladores = new List<Desarrollador>();
 
-    public Desarrollador? ObtenerPorId(int id)
-    {
-        return desarrolladores.FirstOrDefault(d => d.Id == id);
-    }
+    using var conexion = new SqliteConnection(connectionString);
 
-    public Desarrollador Crear(DesarrolladorDTO dto)
+    conexion.Open();
+
+    var cmd = conexion.CreateCommand();
+
+    cmd.CommandText = "SELECT * FROM Desarrolladores";
+
+    using var reader = cmd.ExecuteReader();
+
+    while (reader.Read())
     {
-        var desarrollador = new Desarrollador
+        desarrolladores.Add(new Desarrollador
         {
-            Id = desarrolladores.Count + 1,
-            Nombre = dto.Nombre,
-            Pais = dto.Pais,
-            AnioFundacion = dto.AñoFundacion
+            Id = reader.GetInt32(0),
+            Nombre = reader.GetString(1),
+            Pais = reader.GetString(2),
+            AnioFundacion = reader.GetInt32(3)
+        });
+    }
+
+    return desarrolladores;
+}
+
+public Desarrollador? ObtenerPorId(int id)
+{
+    using var conexion = new SqliteConnection(connectionString);
+
+    conexion.Open();
+
+    var cmd = conexion.CreateCommand();
+
+    cmd.CommandText = @"
+        SELECT *
+        FROM Desarrolladores
+        WHERE Id = $id";
+
+    cmd.Parameters.AddWithValue("$id", id);
+
+    using var reader = cmd.ExecuteReader();
+
+    if (reader.Read())
+    {
+        return new Desarrollador
+        {
+            Id = reader.GetInt32(0),
+            Nombre = reader.GetString(1),
+            Pais = reader.GetString(2),
+            AnioFundacion = reader.GetInt32(3)
         };
-
-        desarrolladores.Add(desarrollador);
-
-        return desarrollador;
     }
 
-    public bool Actualizar(int id, DesarrolladorDTO dto)
+    return null;
+}
+
+public Desarrollador Crear(DesarrolladorDTO dto)
+{
+    using var conexion = new SqliteConnection(connectionString);
+
+    conexion.Open();
+
+    var cmd = conexion.CreateCommand();
+
+    cmd.CommandText = @"
+        INSERT INTO Desarrolladores
+        (Nombre, Pais, AnioFundacion)
+        VALUES
+        ($nombre, $pais, $anioFundacion)";
+
+    cmd.Parameters.AddWithValue("$nombre", dto.Nombre);
+    cmd.Parameters.AddWithValue("$pais", dto.Pais);
+    cmd.Parameters.AddWithValue("$anioFundacion", dto.AnioFundacion);
+
+    cmd.ExecuteNonQuery();
+
+    return new Desarrollador
     {
-        var desarrollador = desarrolladores.FirstOrDefault(d => d.Id == id);
+        Nombre = dto.Nombre,
+        Pais = dto.Pais,
+        AnioFundacion = dto.AnioFundacion
+    };
+}
 
-        if (desarrollador == null)
-            return false;
+public bool Actualizar(int id, DesarrolladorDTO dto)
+{
+    using var conexion = new SqliteConnection(connectionString);
 
-        desarrollador.Nombre = dto.Nombre;
-        desarrollador.Pais = dto.Pais;
-        desarrollador.AnioFundacion = dto.AñoFundacion;
+    conexion.Open();
 
-        return true;
-    }
+    var cmd = conexion.CreateCommand();
 
-    public bool Eliminar(int id)
-    {
-        var desarrollador = desarrolladores.FirstOrDefault(d => d.Id == id);
+    cmd.CommandText = @"
+        UPDATE Desarrolladores
+        SET Nombre = $nombre,
+            Pais = $pais,
+            AnioFundacion = $anioFundacion
+        WHERE Id = $id";
 
-        if (desarrollador == null)
-            return false;
+    cmd.Parameters.AddWithValue("$nombre", dto.Nombre);
+    cmd.Parameters.AddWithValue("$pais", dto.Pais);
+    cmd.Parameters.AddWithValue("$anioFundacion", dto.AnioFundacion);
+    cmd.Parameters.AddWithValue("$id", id);
 
-        desarrolladores.Remove(desarrollador);
+    return cmd.ExecuteNonQuery() > 0;
+}
 
-        return true;
-    }
+public bool Eliminar(int id)
+{
+    using var conexion = new SqliteConnection(connectionString);
+
+    conexion.Open();
+
+    var cmd = conexion.CreateCommand();
+
+    cmd.CommandText = @"
+        DELETE FROM Desarrolladores
+        WHERE Id = $id";
+
+    cmd.Parameters.AddWithValue("$id", id);
+
+    return cmd.ExecuteNonQuery() > 0;
+}
 }

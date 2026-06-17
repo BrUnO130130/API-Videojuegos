@@ -4,7 +4,7 @@ namespace CatalogoVideojuegos.DTOs
     {
         public string Nombre { get; set; } = string.Empty;
         public string Pais { get; set; } = string.Empty;
-        public int AñoFundacion { get; set; }
+        public int AnioFundacion { get; set; }
 
     }
 }
