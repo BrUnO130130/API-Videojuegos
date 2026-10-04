@@ -8,6 +8,16 @@ public class DesarrolladorService : IDesarrolladorService
 {
     private readonly string connectionString = "Data Source=videojuegos.db";
 
+private static Desarrollador MapearDesarrollador(SqliteDataReader reader)
+{
+    return new Desarrollador
+    {
+        Id = reader.GetInt32(0),
+        Nombre = reader.GetString(1),
+        Pais = reader.GetString(2),
+        AnioFundacion = reader.GetInt32(3),
+    };
+}
 public List<Desarrollador> ObtenerTodos()
 {
     var desarrolladores = new List<Desarrollador>();
@@ -24,13 +34,7 @@ public List<Desarrollador> ObtenerTodos()
 
     while (reader.Read())
     {
-        desarrolladores.Add(new Desarrollador
-        {
-            Id = reader.GetInt32(0),
-            Nombre = reader.GetString(1),
-            Pais = reader.GetString(2),
-            AnioFundacion = reader.GetInt32(3)
-        });
+      desarrolladores.Add(MapearDesarrollador(reader));
     }
 
     return desarrolladores;
@@ -55,13 +59,7 @@ public Desarrollador? ObtenerPorId(int id)
 
     if (reader.Read())
     {
-        return new Desarrollador
-        {
-            Id = reader.GetInt32(0),
-            Nombre = reader.GetString(1),
-            Pais = reader.GetString(2),
-            AnioFundacion = reader.GetInt32(3)
-        };
+        return MapearDesarrollador(reader);
     }
 
     return null;

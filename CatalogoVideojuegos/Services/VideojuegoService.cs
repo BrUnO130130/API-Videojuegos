@@ -4,10 +4,23 @@ using Microsoft.Data.Sqlite;
 
 namespace CatalogoVideojuegos.Services;
 
+
 public class VideojuegoService : IVideojuegoService
 {
     private readonly string connectionString = "Data Source=videojuegos.db";
 
+private static Videojuego MapearVideojuego(SqliteDataReader reader)
+{
+    return new Videojuego
+    {
+        Id = reader.GetInt32(0),
+        Nombre = reader.GetString(1),
+        Genero = reader.GetString(2),
+        Precio = Convert.ToDecimal(reader.GetDouble(3)),
+        AnioLanzamiento = reader.GetInt32(4),
+        IdDesarrollador = reader.GetInt32(5)
+    };
+}
 public List<Videojuego> ObtenerTodos()
 {
     var videojuegos = new List<Videojuego>();
@@ -24,15 +37,7 @@ public List<Videojuego> ObtenerTodos()
 
     while(reader.Read())
     {
-        videojuegos.Add(new Videojuego
-        {
-            Id = reader.GetInt32(0),
-            Nombre = reader.GetString(1),
-            Genero = reader.GetString(2),
-            Precio = reader.GetDecimal(3),
-            AnioLanzamiento = reader.GetInt32(4),
-            IdDesarrollador = reader.GetInt32(5)
-        });
+       videojuegos.Add(MapearVideojuego(reader));
     }
 
     return videojuegos;
@@ -57,15 +62,7 @@ public List<Videojuego> ObtenerTodos()
 
     if (reader.Read())
     {
-        return new Videojuego
-        {
-            Id = reader.GetInt32(0),
-            Nombre = reader.GetString(1),
-            Genero = reader.GetString(2),
-            Precio = Convert.ToDecimal(reader.GetDouble(3)),
-            AnioLanzamiento = reader.GetInt32(4),
-            IdDesarrollador = reader.GetInt32(5)
-        };
+        return MapearVideojuego(reader);
     }
 
     return null;
