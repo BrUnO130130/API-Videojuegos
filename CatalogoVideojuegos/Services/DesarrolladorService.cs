@@ -68,16 +68,18 @@ public class DesarrolladorService : IDesarrolladorService
             INSERT INTO Desarrolladores
             (Nombre, Pais, AnioFundacion)
             VALUES
-            ($nombre, $pais, $anioFundacion)";
+            ($nombre, $pais, $anioFundacion);
+            SELECT last_insert_rowid();";
 
         cmd.Parameters.AddWithValue("$nombre", dto.Nombre);
         cmd.Parameters.AddWithValue("$pais", dto.Pais);
         cmd.Parameters.AddWithValue("$anioFundacion", dto.AnioFundacion);
 
-        cmd.ExecuteNonQuery();
+        var idGenerado = (long)cmd.ExecuteScalar()!;
 
         return new Desarrollador
         {
+            Id = (int)idGenerado,
             Nombre = dto.Nombre,
             Pais = dto.Pais,
             AnioFundacion = dto.AnioFundacion
