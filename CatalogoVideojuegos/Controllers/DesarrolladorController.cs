@@ -46,7 +46,7 @@ namespace CatalogoVideojuegos.Controllers
 
             var nuevoDesarrollador = _desarrolladorService.Crear(dto);
             
-            return CreatedAtAction(nameof(Get), nuevoDesarrollador);
+            return CreatedAtAction(nameof(GetById), new { id = nuevoDesarrollador.Id }, nuevoDesarrollador);
         }
 
         [HttpPut("{id}")]

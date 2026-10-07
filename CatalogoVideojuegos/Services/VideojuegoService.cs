@@ -70,7 +70,8 @@ public class VideojuegoService : IVideojuegoService
             INSERT INTO Videojuegos
             (Nombre, Genero, Precio, AnioLanzamiento, IdDesarrollador)
             VALUES
-            ($nombre, $genero, $precio, $anio, $idDesarrollador)";
+            ($nombre, $genero, $precio, $anio, $idDesarrollador);
+            SELECT last_insert_rowid();";
 
         cmd.Parameters.AddWithValue("$nombre", dto.Nombre);
         cmd.Parameters.AddWithValue("$genero", dto.Genero);
@@ -78,10 +79,11 @@ public class VideojuegoService : IVideojuegoService
         cmd.Parameters.AddWithValue("$anio", dto.AnioLanzamiento);
         cmd.Parameters.AddWithValue("$idDesarrollador", dto.IdDesarrollador);
 
-        cmd.ExecuteNonQuery();
+        var idGenerado = (long)cmd.ExecuteScalar()!;
 
         return new Videojuego
         {
+            Id = (int)idGenerado,
             Nombre = dto.Nombre,
             Genero = dto.Genero,
             Precio = dto.Precio,

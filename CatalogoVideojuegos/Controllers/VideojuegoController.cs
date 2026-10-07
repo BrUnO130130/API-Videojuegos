@@ -33,8 +33,8 @@ namespace CatalogoVideojuegos.Controllers
             }
 
             var nuevoJuego = _videojuegoService.Crear(dto);
-            
-            return CreatedAtAction(nameof(Get), nuevoJuego);
+
+            return CreatedAtAction(nameof(GetById), new { id = nuevoJuego.Id }, nuevoJuego);
         }
 
         [HttpGet("{id}")]
