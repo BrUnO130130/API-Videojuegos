@@ -1,11 +1,17 @@
 using CatalogoVideojuegos.DTOs;
 using CatalogoVideojuegos.Models;
 
+namespace CatalogoVideojuegos.Services;
+
 public interface IVideojuegoService
 {
-    List<Videojuego> ObtenerTodos();
-    Videojuego? ObtenerPorId(int id);
-    Videojuego Crear(VideojuegoDTO dto);
-    bool Actualizar(int id, VideojuegoDTO dto);
-    bool Eliminar(int id);
+    Task<List<Desarrollador>> ObtenerTodosAsync();
+
+    Task<Desarrollador?> ObtenerPorIdAsync(int id);
+
+    Task<Desarrollador> CrearAsync(VideojuegoDTO dto);
+
+    Task<bool> ActualizarAsync(int id, VideojuegoDTO dto);
+
+    Task<bool> EliminarAsync(int id);
 }

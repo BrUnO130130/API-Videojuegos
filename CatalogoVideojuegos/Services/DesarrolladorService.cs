@@ -1,135 +1,75 @@
 using CatalogoVideojuegos.DTOs;
 using CatalogoVideojuegos.Models;
-using Microsoft.Data.Sqlite;
+using CatalogoVideojuegos.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CatalogoVideojuegos.Services;
 
 public class DesarrolladorService : IDesarrolladorService
 {
-    private readonly string connectionString = "Data Source=videojuegos.db";
+private readonly AppDbContext _context;
 
-private static Desarrollador MapearDesarrollador(SqliteDataReader reader)
+public DesarrolladorService(AppDbContext context)
 {
-    return new Desarrollador
-    {
-        Id = reader.GetInt32(0),
-        Nombre = reader.GetString(1),
-        Pais = reader.GetString(2),
-        AnioFundacion = reader.GetInt32(3),
-    };
-}
-public List<Desarrollador> ObtenerTodos()
-{
-    var desarrolladores = new List<Desarrollador>();
-
-    using var conexion = new SqliteConnection(connectionString);
-
-    conexion.Open();
-
-    var cmd = conexion.CreateCommand();
-
-    cmd.CommandText = "SELECT * FROM Desarrolladores";
-
-    using var reader = cmd.ExecuteReader();
-
-    while (reader.Read())
-    {
-      desarrolladores.Add(MapearDesarrollador(reader));
-    }
-
-    return desarrolladores;
+    _context = context;
 }
 
-public Desarrollador? ObtenerPorId(int id)
+public async Task<List<Desarrollador>> ObtenerTodosAsync()
 {
-    using var conexion = new SqliteConnection(connectionString);
-
-    conexion.Open();
-
-    var cmd = conexion.CreateCommand();
-
-    cmd.CommandText = @"
-        SELECT *
-        FROM Desarrolladores
-        WHERE Id = $id";
-
-    cmd.Parameters.AddWithValue("$id", id);
-
-    using var reader = cmd.ExecuteReader();
-
-    if (reader.Read())
-    {
-        return MapearDesarrollador(reader);
-    }
-
-    return null;
+    return await _context.Desarrolladores.ToListAsync();
 }
 
-public Desarrollador Crear(DesarrolladorDTO dto)
+public async Task<Desarrollador?> ObtenerPorIdAsync(int id)
 {
-    using var conexion = new SqliteConnection(connectionString);
-
-    conexion.Open();
-
-    var cmd = conexion.CreateCommand();
-
-    cmd.CommandText = @"
-        INSERT INTO Desarrolladores
-        (Nombre, Pais, AnioFundacion)
-        VALUES
-        ($nombre, $pais, $anioFundacion)";
-
-    cmd.Parameters.AddWithValue("$nombre", dto.Nombre);
-    cmd.Parameters.AddWithValue("$pais", dto.Pais);
-    cmd.Parameters.AddWithValue("$anioFundacion", dto.AnioFundacion);
-
-    cmd.ExecuteNonQuery();
-
-    return new Desarrollador
+    return await _context.Desarrolladores.FindAsync(id);
+}
+public async Task<Desarrollador> CrearAsync(DesarrolladorDTO dto)
+{
+    var desarrollador = new Desarrollador
     {
         Nombre = dto.Nombre,
         Pais = dto.Pais,
         AnioFundacion = dto.AnioFundacion
     };
+
+    _context.Desarrolladores.Add(desarrollador);
+
+    await _context.SaveChangesAsync();
+
+    return desarrollador;
 }
 
-public bool Actualizar(int id, DesarrolladorDTO dto)
+public async Task<bool> ActualizarAsync(int id, DesarrolladorDTO dto)
 {
-    using var conexion = new SqliteConnection(connectionString);
+    var desarrollador = await _context.Desarrolladores.FindAsync(id);
 
-    conexion.Open();
+    if (desarrollador == null)
+    {
+        return false;
+    }
 
-    var cmd = conexion.CreateCommand();
+    desarrollador.Nombre = dto.Nombre;
+    desarrollador.Pais = dto.Pais;
+    desarrollador.AnioFundacion = dto.AnioFundacion;
 
-    cmd.CommandText = @"
-        UPDATE Desarrolladores
-        SET Nombre = $nombre,
-            Pais = $pais,
-            AnioFundacion = $anioFundacion
-        WHERE Id = $id";
+    await _context.SaveChangesAsync();
 
-    cmd.Parameters.AddWithValue("$nombre", dto.Nombre);
-    cmd.Parameters.AddWithValue("$pais", dto.Pais);
-    cmd.Parameters.AddWithValue("$anioFundacion", dto.AnioFundacion);
-    cmd.Parameters.AddWithValue("$id", id);
-
-    return cmd.ExecuteNonQuery() > 0;
+    return true;
 }
-
-public bool Eliminar(int id)
+public async Task<bool> EliminarAsync(int id)
 {
-    using var conexion = new SqliteConnection(connectionString);
+    var desarrollador = await _context.Desarrolladores.FindAsync(id);
 
-    conexion.Open();
+    if (desarrollador == null)
+    {
+        return false;
+    }
 
-    var cmd = conexion.CreateCommand();
+    _context.Desarrolladores.Remove(desarrollador);
 
-    cmd.CommandText = @"
-        DELETE FROM Desarrolladores
-        WHERE Id = $id";
+    await _context.SaveChangesAsync();
 
-    cmd.Parameters.AddWithValue("$id", id);
-
-    return cmd.ExecuteNonQuery() > 0;
+    return true;
 }
+
 }

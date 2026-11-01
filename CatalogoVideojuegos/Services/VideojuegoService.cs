@@ -1,74 +1,30 @@
 using CatalogoVideojuegos.DTOs;
 using CatalogoVideojuegos.Models;
-using Microsoft.Data.Sqlite;
+using CatalogoVideojuegos.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CatalogoVideojuegos.Services;
 
-
 public class VideojuegoService : IVideojuegoService
 {
-    private readonly string connectionString = "Data Source=videojuegos.db";
+    private readonly AppDbContext _context;
 
-private static Videojuego MapearVideojuego(SqliteDataReader reader)
-{
-    return new Videojuego
+    public VideojuegoService(AppDbContext context)
     {
-        Id = reader.GetInt32(0),
-        Nombre = reader.GetString(1),
-        Genero = reader.GetString(2),
-        Precio = Convert.ToDecimal(reader.GetDouble(3)),
-        AnioLanzamiento = reader.GetInt32(4),
-        IdDesarrollador = reader.GetInt32(5)
-    };
-}
-public List<Videojuego> ObtenerTodos()
-{
-    var videojuegos = new List<Videojuego>();
-
-    using var conexion = new SqliteConnection(connectionString);
-
-    conexion.Open();
-
-    var cmd = conexion.CreateCommand();
-
-    cmd.CommandText = "SELECT * FROM Videojuegos";
-
-    using var reader = cmd.ExecuteReader();
-
-    while(reader.Read())
-    {
-       videojuegos.Add(MapearVideojuego(reader));
+        _context = context;
     }
 
-    return videojuegos;
-}
-
-    public Videojuego? ObtenerPorId(int id)
-{
-    using var conexion = new SqliteConnection(connectionString);
-
-    conexion.Open();
-
-    var cmd = conexion.CreateCommand();
-
-    cmd.CommandText = @"
-        SELECT *
-        FROM Videojuegos
-        WHERE Id = $id";
-
-    cmd.Parameters.AddWithValue("$id", id);
-
-    using var reader = cmd.ExecuteReader();
-
-    if (reader.Read())
+    public async Task<List<Videojuego>> ObtenerTodosAsync()
     {
-        return MapearVideojuego(reader);
+        return await _context.Videojuegos.ToListAsync();
     }
 
-    return null;
-}
+    public async Task<Videojuego?> ObtenerPorIdAsync(int id)
+    {
+        return await _context.Videojuegos.FindAsync(id);
+    }
 
-    public Videojuego Crear(VideojuegoDTO dto)
+    public async Task<Videojuego> CrearAsync(VideojuegoDTO dto)
     {
         var videojuego = new Videojuego
         {
@@ -79,74 +35,44 @@ public List<Videojuego> ObtenerTodos()
             IdDesarrollador = dto.IdDesarrollador
         };
 
-        using var conexion = new SqliteConnection(connectionString);
-
-    conexion.Open();
-
-    var cmd = conexion.CreateCommand();
-
-    cmd.CommandText = @"
-    INSERT INTO Videojuegos
-    (Nombre, Genero, Precio, AnioLanzamiento, IdDesarrollador)
-    VALUES
-    ($nombre, $genero, $precio, $anio, $idDesarrollador)";
-        
-    cmd.Parameters.AddWithValue("$nombre", dto.Nombre);
-    cmd.Parameters.AddWithValue("$genero", dto.Genero);
-    cmd.Parameters.AddWithValue("$precio", dto.Precio);
-    cmd.Parameters.AddWithValue("$anio", dto.AnioLanzamiento);
-    cmd.Parameters.AddWithValue("$idDesarrollador", dto.IdDesarrollador);
-
-    cmd.ExecuteNonQuery();
+        _context.Videojuegos.Add(videojuego);
+        await _context.SaveChangesAsync();
 
         return videojuego;
     }
 
-  public bool Actualizar(int id, VideojuegoDTO dto)
-{
-    using var conexion = new SqliteConnection(connectionString);
+    public async Task<bool> ActualizarAsync(int id, VideojuegoDTO dto)
+    {
+        var videojuego = await _context.Videojuegos.FindAsync(id);
 
-    conexion.Open();
+        if (videojuego == null)
+        {
+            return false;
+        }
 
-    var cmd = conexion.CreateCommand();
+        videojuego.Nombre = dto.Nombre;
+        videojuego.Genero = dto.Genero;
+        videojuego.Precio = dto.Precio;
+        videojuego.AnioLanzamiento = dto.AnioLanzamiento;
+        videojuego.IdDesarrollador = dto.IdDesarrollador;
 
-    cmd.CommandText = @"
-        UPDATE Videojuegos
-        SET Nombre = $nombre,
-            Genero = $genero,
-            Precio = $precio,
-            AnioLanzamiento = $anio,
-            IdDesarrollador = $idDesarrollador
-        WHERE Id = $id";
+        await _context.SaveChangesAsync();
 
-    cmd.Parameters.AddWithValue("$nombre", dto.Nombre);
-    cmd.Parameters.AddWithValue("$genero", dto.Genero);
-    cmd.Parameters.AddWithValue("$precio", dto.Precio);
-    cmd.Parameters.AddWithValue("$anio", dto.AnioLanzamiento);
-    cmd.Parameters.AddWithValue("$idDesarrollador", dto.IdDesarrollador);
-    cmd.Parameters.AddWithValue("$id", id);
+        return true;
+    }
 
-    int filasAfectadas = cmd.ExecuteNonQuery();
+    public async Task<bool> EliminarAsync(int id)
+    {
+        var videojuego = await _context.Videojuegos.FindAsync(id);
 
-    return filasAfectadas > 0;
-}
+        if (videojuego == null)
+        {
+            return false;
+        }
 
-public bool Eliminar(int id)
-{
-    using var conexion = new SqliteConnection(connectionString);
+        _context.Videojuegos.Remove(videojuego);
+        await _context.SaveChangesAsync();
 
-    conexion.Open();
-
-    var cmd = conexion.CreateCommand();
-
-    cmd.CommandText = @"
-        DELETE FROM Videojuegos
-        WHERE Id = $id";
-
-    cmd.Parameters.AddWithValue("$id", id);
-
-    int filasAfectadas = cmd.ExecuteNonQuery();
-
-    return filasAfectadas > 0;
-}
+        return true;
+    }
 }
