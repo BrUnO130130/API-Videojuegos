@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj": {}
+    "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj": {
+    "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+        "projectUniqueName": "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
         "projectName": "CatalogoVideojuegos",
-        "projectPath": "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
-        "packagesPath": "C:\\Users\\benja\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\obj\\",
+        "projectPath": "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\benja\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"

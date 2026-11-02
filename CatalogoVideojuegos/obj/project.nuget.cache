@@ -1,26 +1,26 @@
 {
   "version": 2,
-  "dgSpecHash": "s7yiRbrOUmA=",
+  "dgSpecHash": "tBU0RcMYtVo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+  "projectFilePath": "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\benja\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
-    "C:\\Users\\benja\\.nuget\\packages\\microsoft.data.sqlite\\10.0.9\\microsoft.data.sqlite.10.0.9.nupkg.sha512",
-    "C:\\Users\\benja\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.9\\microsoft.data.sqlite.core.10.0.9.nupkg.sha512",
-    "C:\\Users\\benja\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
-    "C:\\Users\\benja\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.11\\sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
-    "C:\\Users\\benja\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",
-    "C:\\Users\\benja\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.11\\sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
-    "C:\\Users\\benja\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.11\\sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512"
+    "C:\\Users\\bruno\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\microsoft.data.sqlite\\10.0.9\\microsoft.data.sqlite.10.0.9.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.9\\microsoft.data.sqlite.core.10.0.9.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.11\\sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.11\\sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.11\\sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+      "projectPath": "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+      "filePath": "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"
@@ -30,9 +30,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'SQLitePCLRaw.lib.e_sqlite3' 2.1.11 has a known high severity vulnerability, https://github.com/advisories/GHSA-2m69-gcr7-jv3q",
-      "projectPath": "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+      "projectPath": "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\benja\\OneDrive\\Documents\\Tec.Programacion\\Programacion 4- ASP.Net\\TP-API-Videojuegos\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
+      "filePath": "C:\\Users\\bruno\\OneDrive\\Documents\\API-Videojuegos-main\\CatalogoVideojuegos\\CatalogoVideojuegos.csproj",
       "libraryId": "SQLitePCLRaw.lib.e_sqlite3",
       "targetGraphs": [
         "net10.0"
