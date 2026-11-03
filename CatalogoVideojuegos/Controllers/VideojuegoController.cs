@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using CatalogoVideojuegos.DTOs;
-using CatalogoVideojuegos.Models;
 using CatalogoVideojuegos.Services;
 
 namespace CatalogoVideojuegos.Controllers
@@ -15,66 +14,48 @@ namespace CatalogoVideojuegos.Controllers
         {
             _videojuegoService = videojuegoService;
         }
-    
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var juegos = _videojuegoService.ObtenerTodos();
+            var juegos = await _videojuegoService.ObtenerTodosAsync();
             return Ok(juegos);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var juego = await _videojuegoService.ObtenerPorIdAsync(id);
+            if (juego == null)
+                return NotFound($"El videojuego con ID {id} no existe.");
+            return Ok(juego);
+        }
+
         [HttpPost]
-        public IActionResult Post([FromBody] VideojuegoDTO dto)
+        public async Task<IActionResult> Post([FromBody] VideojuegoDTO dto)
         {
             if (dto == null)
-            {
                 return BadRequest("Los datos enviados no son válidos.");
-            }
-
-            var nuevoJuego = _videojuegoService.Crear(dto);
-
+            var nuevoJuego = await _videojuegoService.CrearAsync(dto);
             return CreatedAtAction(nameof(GetById), new { id = nuevoJuego.Id }, nuevoJuego);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
-        {
-            var juego = _videojuegoService.ObtenerPorId(id);
-            
-            if (juego == null)
-            {
-                return NotFound($"El videojuego con ID {id} no existe."); // Estado 404
-            }
-            
-            return Ok(juego); 
-        }
-
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] VideojuegoDTO dto)
+        public async Task<IActionResult> Put(int id, [FromBody] VideojuegoDTO dto)
         {
             if (dto == null) return BadRequest();
-
-            var actualizado = _videojuegoService.Actualizar(id, dto);
-            
+            var actualizado = await _videojuegoService.ActualizarAsync(id, dto);
             if (!actualizado)
-            {
                 return NotFound($"No se pudo actualizar. El videojuego con ID {id} no existe.");
-            }
-
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var eliminado = _videojuegoService.Eliminar(id);
-            
+            var eliminado = await _videojuegoService.EliminarAsync(id);
             if (!eliminado)
-            {
                 return NotFound($"No se pudo eliminar. El videojuego con ID {id} no existe.");
-            }
-
             return NoContent();
         }
     }

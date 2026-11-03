@@ -5,11 +5,11 @@ namespace CatalogoVideojuegos.Services;
 
 public interface IVideojuegoService
 {
-    Task<List<Desarrollador>> ObtenerTodosAsync();
+    Task<List<Videojuego>> ObtenerTodosAsync();
 
-    Task<Desarrollador?> ObtenerPorIdAsync(int id);
+    Task<Videojuego?> ObtenerPorIdAsync(int id);
 
-    Task<Desarrollador> CrearAsync(VideojuegoDTO dto);
+    Task<Videojuego> CrearAsync(VideojuegoDTO dto);
 
     Task<bool> ActualizarAsync(int id, VideojuegoDTO dto);
 
