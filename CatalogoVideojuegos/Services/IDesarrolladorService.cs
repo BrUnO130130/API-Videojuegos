@@ -1,3 +1,5 @@
+// Define las operaciones que debe ofrecer el servicio de desarrolladores.
+// DesarrolladorService implementa estos métodos.
 using CatalogoVideojuegos.DTOs;
 using CatalogoVideojuegos.Models;
 
